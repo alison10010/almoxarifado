@@ -1,0 +1,194 @@
+/* --------- HEADER - INICIO ------------ */
+.container-fluid {
+    height: 70px;
+    padding-top: 10px;
+}
+
+.navbar-nav>li>a {
+    color: #FFF !important;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+}
+.navbar-nav>li>.dropdown-menu {
+    /* border-top-left-radius: 12px; */
+    /* border-top-right-radius: 12px; */
+    border-radius: 10px;
+}
+
+#sair:hover {
+    cursor: pointer;
+    background: transparent;
+}
+
+/* --------- CARD DE FORM - INICIO ------------ */
+
+
+/* --------- HEADER - FIM ------------ */
+
+.card {
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    padding: 30px;
+    margin: 20px;
+    width: 450px;
+    /* transition: all 0.3s ease-out; */
+}
+/* .card:hover {
+    transform: translateY(-5px); 
+    cursor: pointer;
+} */
+
+.animemation{
+    transition: all 0.3s ease-out;
+    float: left;
+}
+.animemation:hover {
+    transform: translateY(-5px); 
+    cursor: pointer;
+}
+
+.linha {
+    border-left: 3px solid #4e4e4e;
+}
+   
+/* --------- CARD DE FORM - FIM ------------ */
+
+.card label {
+    color: #726f6f;
+    font-size: 16px;
+}
+
+.capitalize{
+    text-transform:capitalize;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.frame{
+    display: none;
+}
+
+.painel{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+/* ----- UPLOAD DE IMAGEM - INICIO -------- */
+
+input[type='file'] {
+    display: none;
+}
+
+.max-width {
+    margin-top: -25px;
+}
+
+#imgPhoto {
+    margin-top: 10%;
+    width: 240px;
+    height: 240px;
+    background-color: #DCDCDC;
+    border-radius: 10%;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+#imgPhoto:hover{
+    border: 5px solid transparent;
+}
+
+/* ----- UPLOAD DE IMAGEM - FIM -------- */
+
+/*------ SUBMENU - INICIO ----- */
+ul {
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    display: block;
+    position: relative;
+}
+li ul { 
+    display: none; 
+}
+ul>li>a {
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  color: #2c3e50;
+}
+ul li a:hover { 
+    background: #DCDCDC; 
+    color: #333;
+}
+li:hover > ul {
+    display: block;
+    position: absolute; 
+}
+ul ul ul {
+    left: 100%;
+    top: 0;
+}
+.subMenuColor{
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%); 
+}
+
+.dropdown-menu>li>a:hover{
+    background: #DCDCDC; 
+    color: #333;
+}
+
+/*------ SUBMENU - FIM ----- */
+
+
+/*------ DETALHES MATERIAL MODAL - INICIO ---- */
+  
+  .modal-lado {
+    float: left;
+    width: 50%;
+    padding: 0px 1px 0px 10px;
+    height: 340px; 
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 600px) {
+    .modal-lado {
+      width: 100%;
+    }
+  }
+  #img-model{
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  }
+
+  #imgPhoto{
+    box-shadow: 7px 7px 10px 0px rgb(50 50 50 / 22%);
+    margin-top: 21px;
+    height: 100%;
+    width: 77%;
+  }
+/*------ DETALHES MATERIAL MODAL - FIM ---- */
+
+ /*----- TABELAS ------*/
+.centro{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle
+}
