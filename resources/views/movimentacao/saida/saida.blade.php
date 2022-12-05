@@ -1,14 +1,14 @@
 @extends('layouts.template')  {{-- USA O LAYOUT PADRÃO --}}
-@section('title', 'Adicionar Material') {{-- TITULO DA PAGE --}}
+@section('title', 'saida de Material') {{-- TITULO DA PAGE --}}
 
 @section('content') {{-- CONTEUDO DA PAGE - INICIO --}}
 
-<form action="{{route('materiais.localizaEntrada')}}" method="POST" autocomplete="off" style="margin-top: 2rem">
+<form action="{{route('materiais.localizaSaida')}}" method="POST" autocomplete="off" style="margin-top: 2rem">
   @csrf
 
   <div class="form-row">
     <div class="form-group">
-      <h3>Entrada de material</h3>
+      <h3>Saída de material</h3>
     </div>
     <br />
 
@@ -42,12 +42,12 @@
           <th scope="col" style="width: 12%"><center>Estoque minimo</center></th>
           <th scope="col" style="width: 25%">Decrição</th>
           <th scope="col" style="width: 13%">Grupo</th>
-            <th scope="col">Adicionar</th>
+            <th scope="col">Saída</th>
         </tr>
     </thead>
     <tbody>  
         @foreach ($material as $listas)
-          <tr>
+          <tr> 
               <td>{{ $listas->id }}</td>
               <td>{{ $listas->nome }}</td>
               <td class="centro">{{ $listas->estoque_atual }}</td>
@@ -55,8 +55,8 @@
               <td>{{ $listas->descricao }}</td>
               <td class="centro">{{ $listas->grupo->nome }}</td>
               <td class="centro">
-                  <a href="#" onclick="entradaModal({{ $listas->id }});">
-                    <img src="/img/add.svg" width="30px">
+                  <a href="{{route('saida.saidaForm', $listas->id)}}"> 
+                    <img src="/img/saida.svg" width="30px">
                   </a>
               </td>
           </tr>
@@ -70,32 +70,6 @@
   @endif
  
 @endif
-
-{{-- Modal de Detalhes de Funcionario --}}
-<div class="modal fade" id="entradaModal" role="dialog" style="margin-top: 10%;">
-  <div class="modal-dialog">
-  <div class="modal-content"> 
-      <div class="modal-header">
-      <h4 class="modal-title">Entrada de <label id="p-nome"></label></h4>
-      </div>
-      <div class="modal-body">
-          <div class="row">
-            <form action="{{route('entrada.store')}}" method="POST" autocomplete="off">
-              @csrf 
-              <center>
-                <input type="number" name="quant_material" min="1" placeholder="Quantidade de material para inclusão" title="Quantidade de material para inclusão" class="form-control" id="quant_material" style="width: 90%">
-                <input type="hidden" name="material_id" id="p-id">
-                <br />
-                <button class="btn btn-primary" type="submit">Adicionar</button>
-                <button class="btn btn-danger" type="reset" data-dismiss="modal">cancelar</button>
-              </center>
-            </form>              
-          </div>                
-      </div>
-      <br />
-
-  </div>
-</div>
 
 
 @endsection  {{-- CONTEUDO DA PAGE - FIM --}}

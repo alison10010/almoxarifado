@@ -82,8 +82,8 @@ class MaterialController extends Controller
         return redirect()->route('materiais.gerenciar')->with('msg', 'Material removido com sucesso!');
     }
 
-    // BUSCA MATERIAL VIA ID || NOME
-    public function localizaMaterial(Request $request, MaterialRepository $model)
+    // BUSCA MATERIAL PARA ENTRADA VIA ID || NOME
+    public function localizaEntradaMaterial(Request $request, MaterialRepository $model)
     {
         try {
             $material = $model->buscaMaterial($request->material);
@@ -91,6 +91,17 @@ class MaterialController extends Controller
 
         } catch (\Throwable $th) {
             return redirect('/movimentacao/entrada')->with('error', 'Material não encontrado!');
+        } 
+    }
+
+    // BUSCA MATERIAL PARA SAÍDA VIA ID || NOME
+    public function localizaSaidaMaterial(Request $request, MaterialRepository $model)
+    {
+        try {
+            $material = $model->buscaMaterial($request->material);
+            return view('movimentacao.saida.saida', ['material' => $material]);
+        } catch (\Throwable $th) {
+            return redirect('/movimentacao/saida')->with('error', 'Material não encontrado!');
         } 
     }
 

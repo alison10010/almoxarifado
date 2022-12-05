@@ -15,4 +15,6 @@ Route::get('/materiais/delete/{id}', [MaterialController::class, 'deletar'])->na
 Route::patch('/materiais/delete/{id}', [MaterialController::class, 'delete'])->name('materiais.delete');
 
 
-Route::post('/movimentacao/entrada', [MaterialController::class, 'localizaMaterial'])->name('materiais.localiza'); // LISTA MATERIAIS NA PAGE
+Route::post('/movimentacao/entrada', [MaterialController::class, 'localizaEntradaMaterial'])->name('materiais.localizaEntrada'); // LISTA MATERIAIS NA PAGE
+
+Route::post('/movimentacao/saida', [MaterialController::class, 'localizaSaidaMaterial'])->name('materiais.localizaSaida'); // LISTA MATERIAIS NA PAGE

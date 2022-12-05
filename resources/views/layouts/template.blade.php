@@ -51,7 +51,7 @@
             <li><a href="#">Material</a>
               <ul class="subMenuColor">
                 <li><a href="{{route('entrada.material')}}">Entrada de Material</a></li>
-                <li><a href="{{route('materiais.gerenciar')}}">Saída de Material</a></li>
+                <li><a href="{{route('saida.material')}}">Saída de Material</a></li>
               </ul>
             </li>
           </ul>

@@ -24,8 +24,8 @@ Route::middleware('auth')->group(function () {  // PAGINA PARA CRIAR UM EVENTO P
     require __DIR__.'/material.php';
 
     require __DIR__.'/relatorio.php';
-
-    Route::get('/movimentacao/entrada', function () { return view('movimentacao.entrada.entrada'); })->name('entrada.material');
+    
+    require __DIR__.'/movimentacao.php';
 
     Route::post('/entrada/inclusao', [EntradaController::class, 'store'])->name('entrada.store'); 
 

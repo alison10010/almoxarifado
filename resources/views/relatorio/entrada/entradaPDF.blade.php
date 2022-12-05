@@ -94,7 +94,7 @@ tr:nth-child(even){background-color: #f2f2f2}
       </tbody>
     </table>
           @if(count($entrada['material']) == 0)
-              <p style="color: red">Não foi encontrado relatório desse material, verifique o identificador.</p>
+              <p style="color: red">Não foi encontrado relatório de entrada do material.</p>
           @endif
         @endif
 
