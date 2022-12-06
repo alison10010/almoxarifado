@@ -192,3 +192,8 @@ ul ul ul {
     text-align: center;
     vertical-align: middle
 }
+
+/*----- ESPAÇO ENTRE LINHA ------*/
+.especamento{
+    line-height: 1.8;
+}

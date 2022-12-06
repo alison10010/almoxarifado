@@ -22,8 +22,8 @@
 
     <br />
 
-    <a type="button" class="btn btn-danger btn-md" href="{{ route('grupos.gerenciar') }}">Cancelar</button></a>
     <button type="submit" class="btn btn-primary">Concluir</button>
+    <a type="button" class="btn btn-danger btn-md" href="{{ route('grupos.gerenciar') }}">Cancelar</button></a>
 
   </form>
   

@@ -3,48 +3,51 @@
 
 @section('content') {{-- CONTEUDO DA PAGE - INICIO --}}
 
-<center>
-
-<div class="card linha" style="margin-top: 4rem;width: 60%">
+<div class="card linha" style="margin-top: 4rem;width: 60%; margin-left: 25%">
   <h4>Saída de Material</h4>
   <br />
   <div class="row">   
     <form action="#" method="POST" autocomplete="off" enctype="multipart/form-data">
       @csrf  
       @method('POST')                   
+      
+      <div class="form-inline" style="padding: 0px 1px 0px 10px;">
+        Quantidade de saída:
+        <input type="number" name="saida" placeholder="Quantidade de saída" title="Quantidade Atual" class="form-control" id="saida" style="width:200px" min="1" max="{{$material->estoque_atual}}">
+      </div>
+      <div class="form-gropu" style="padding: 0px 1px 0px 10px;">
+        Observações:
+        <textarea name="observacao" id="observacao" class="form-control" placeholder="Observações da saída" style="resize: none;"></textarea>
+      </div>
 
+      <hr >
       <div class="modal-lado">
-        <div class="form-group">
-          <input type="text" name="nome" class="form-control" id="Nome_Material" placeholder="Nome do Material" required value="{{$material->nome}}">
+        <div class="form-inline especamento">
+          Material: <label>{{$material->nome}}</label>          
         </div>
     
-        <div class="form-inline" style="justify-content: space-between;display: flex;">
-            <input type="number" name="estoque_atual" placeholder="Quantidade Atual" title="Quantidade Atual" class="form-control" id="estoque_atual" width="250px" value="{{$material->estoque_atual}}">
-            <input type="number" name="estoque_minimo" placeholder="Estoque Mínimo" title="Avisa para repor quando estiver no valor mínimo" class="form-control" id="estoque_minimo" width="250px" value="{{$material->estoque_minimo}}">
-        </div>
-        <br />
-    
-        <div class="form-group">
-          <select id="grupo" name="grupo_id" class="form-control" required value="{{ old('grupo') }}">
-                <option value="{{$material->grupo->id}}" selected>{{$material->grupo->nome}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição do material" style="resize: none;">{{$material->descricao}}</textarea>
+        <div class="form-inline especamento">
+            Em estoque : <label>{{$material->estoque_atual}}</label> 
         </div>
         
-        <br />
+        <div class="form-inline especamento">
+          Grupo: <label>{{$material->grupo->nome}}</label> 
+        </div>
 
-        <button type="submit" class="btn btn-primary">Concluir</button>
+        <div class="form-group especamento">
+          Descrição do material: <label>{{$material->descricao}}</label> 
+        </div>        
 
-        <a type="button" class="btn btn-danger" href="{{ route('materiais.gerenciar') }}">Cancelar</button></a>
+
+        <button type="submit" class="btn btn-primary">Gerar saída</button>
+
+        <a type="button" class="btn btn-danger" href="{{ route('saida.material') }}">Cancelar</button></a>
       </div>
 
       <div class="modal-lado">
         <div class="max-width">
           <div class="imageContainer"> 
-            <input type="file" id="flImage" name="image" accept="image/*">
-            <img src="/img/materiais/{{$material->image}}" alt="Selecione uma imagem" id="imgPhoto">
+            <img src="/img/materiais/{{$material->image}}" alt="Material" id="imgPhoto">
           </div>
       </div>
       
@@ -55,5 +58,4 @@
   
 </div>
 
-</center>
 @endsection  {{-- CONTEUDO DA PAGE - FIM --}}

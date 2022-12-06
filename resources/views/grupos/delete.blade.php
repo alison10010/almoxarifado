@@ -21,8 +21,9 @@
         <label class="txtExcluir"><b> {{$grupo->descricao}}  </b></label>           
     </div>
     <input type="hidden" name="status" value="0">
-    <a type="button" class="btn btn-primary btn-md" href="{{ route('grupos.gerenciar') }}">Cancelar</button></a> 
+
     <button type="submit" class="btn btn-danger">Excluir</button>
+    <a type="button" class="btn btn-primary btn-md" href="{{ route('grupos.gerenciar') }}">Cancelar</button></a> 
 
   </form>
   

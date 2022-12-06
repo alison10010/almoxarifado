@@ -21,7 +21,7 @@
         </thead>
         <tbody>  
             @foreach ($materiais as $list) 
-                <tr>
+                <tr style="background: {{ $list->estoque_atual > $list->estoque_minimo ? '' : '#ff00003d' }};">
                     <td class="centro">{{ $list->id}}</td>
                     <td>{{ $list->nome}}</td>
                     <td class="centro">{{ $list->estoque_atual}}</td>
@@ -58,26 +58,26 @@
                 <div class="row">                       
 
                     <div class="modal-lado">
-                    Material:<b><a id="p-nome" style="margin-left: 10px"></b></a>
+                    Material:<b><label id="p-nome" style="margin-left: 10px"></label></b>
 
                     <br><br>
                     Estoque Atual:
-                    <b><a id="p-estoque_atual" style="margin-left: 10px"></b></a>
+                    <b><label id="p-estoque_atual" style="margin-left: 10px"></label></b>
                     
                     <br><br>
                     Estoque Minimo:
-                    <b><a id="p-estoque_minimo"></b></a>
+                    <b><label id="p-estoque_minimo"></a></b>
                     <br><br>
 
                     Grupo pertencente: 
-                    <b><a id="p-grupo_id" style="margin-left: 7px"></b></a>
+                    <b><label id="p-grupo_id" style="margin-left: 7px"></label></b>
                     <br><br>
 
                     Situação:
-                    <b><a>Ativo</b></a>
+                    <b><label>Ativo</label></b>
                     <br><br>
 
-                    <p>Descrição: <b><a id="p-descricao"></a></b></p>
+                    <p>Descrição: <b><label id="p-descricao"></label></p></b>
                     </div>
                     <div class="modal-lado" id="img-model">
                         <p id="p-image" >
