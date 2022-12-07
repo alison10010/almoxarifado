@@ -104,4 +104,31 @@ function frameResumoEstoque(){
 }
 
 
+// MOSTRA CAMPO PARA NUMERO DE SEI DA SAIDA DE MATERIAL
+function seiCampoSelect() {
+    var x = document.getElementById("seiCampo").value;
+    if(x === 'seiFalse'){
+        document.getElementById("campo_sei").style.display = "none";
+        document.getElementById("sei").style.display = "none";
+    }
+    if(x === 'seiTrue'){
+        document.getElementById("campo_sei").style.display = "block";
+        document.getElementById("sei").style.display = "block";
+    } 
+}
+
+function seiOpcao(opcao)
+{
+    document.getElementById('sei').value='';
+    if(opcao === 'seiFalse'){
+        document.getElementById("sei").style.display = "none";
+        identificacao = false;
+    }
+    if(opcao === 'seiTrue'){
+        document.getElementById("sei").style.display = "block";
+        identificacao = true;
+    }    
+}
+
+
 

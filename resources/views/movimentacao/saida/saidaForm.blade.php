@@ -11,13 +11,34 @@
       @csrf  
       @method('POST')                   
       
-      <div class="form-inline" style="padding: 0px 1px 0px 10px;">
+      <div class="form-inline" style="margin-left: 12px;">
         Quantidade de saída:
         <input type="number" name="saida" placeholder="Quantidade de saída" title="Quantidade Atual" class="form-control" id="saida" style="width:200px" min="1" max="{{$material->estoque_atual}}">
       </div>
-      <div class="form-gropu" style="padding: 0px 1px 0px 10px;">
-        Observações:
-        <textarea name="observacao" id="observacao" class="form-control" placeholder="Observações da saída" style="resize: none;"></textarea>
+      <br />
+
+      <div class="form-inline" style="margin-left: 12px;">  
+        <label class="form-check-label" for="especifico">Possui número de SEI:</label>     
+        <select id="seiCampo" onchange="seiCampoSelect()" class="form-control" style="width:170px;">
+          <option value="seiFalse">Não</option>
+          <option value="seiTrue">Sim</option>
+        </select>
+      </div> 
+      <div class="form-check" style="margin-left: 12px;margin-top: 10px;display: none" id="campo_sei">
+        <input type="radio" class="form-check-input" id="todos" name="opcao" value="todos" onclick="seiOpcao('seiTrue')" checked>
+        <label class="form-check-label" for="todos">Adicionar SEI agora</label>
+        &nbsp;&nbsp;
+        <input type="radio" class="form-check-input" id="especifico" name="opcao" value="especifico" onclick="seiOpcao('seiFalse')">
+        <label class="form-check-label" for="especifico">Adicionar SEI depois</label>             
+      </div>
+
+      <div class="form-group" style="margin-left: 12px;">
+        <input type="text" name="num_sei" placeholder="000.000000.00000/0000-00" class="form-control" id="sei" value="{{ old('sei') }}" style="max-width: 340px;margin-top: 10px;display: none">
+      </div>
+
+      <div class="form-group" style="margin-left: 12px;">        
+        <label class="form-check-label" for="Observações">Observações:</label> 
+        <textarea name="observacao" id="observacao" class="form-control" placeholder="Observações da saída" style="resize: none;width:340px"></textarea>
       </div>
 
       <hr >
