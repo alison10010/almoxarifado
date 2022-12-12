@@ -71,10 +71,6 @@ class MaterialRepository extends AbstractRepository{
             $material->image = $imageName; // O Q SERÁ SALVO NO BD
         }
 
-        $user = auth()->user(); // PEGA O USER LOGADO E ATRIBUI EM VARIAVEL
-
-        $material->user_id = $user->id; // ATRIBUI O ID DO USUARIO LOGADO NO USER_ID DO POSTO
-
         $material->save();  // SALVA NO BD
     }
 

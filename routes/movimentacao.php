@@ -7,4 +7,6 @@ Route::get('/movimentacao/entrada', function () { return view('movimentacao.entr
 Route::get('/movimentacao/saida', function () { return view('movimentacao.saida.saida'); })->name('saida.material');
 
 
-Route::get('/movimentacao/saida/{id}', [SaidaController::class, 'saidaForm'])->name('saida.saidaForm'); // PAGE DE UPDATE.
+Route::get('/movimentacao/saida/{id}', [SaidaController::class, 'saidaForm'])->name('saida.saidaForm'); // PAGE DE SAIDA DE MATERIAL.
+
+Route::post('/movimentacao/saidaMaterial', [SaidaController::class, 'saidaStore'])->name('saida.store'); // SALVA SAIDA DE MATERIAL

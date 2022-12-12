@@ -107,11 +107,11 @@ function frameResumoEstoque(){
 // MOSTRA CAMPO PARA NUMERO DE SEI DA SAIDA DE MATERIAL
 function seiCampoSelect() {
     var x = document.getElementById("seiCampo").value;
-    if(x === 'seiFalse'){
+    if(x === 'Nao'){
         document.getElementById("campo_sei").style.display = "none";
         document.getElementById("sei").style.display = "none";
     }
-    if(x === 'seiTrue'){
+    if(x === 'Sim'){
         document.getElementById("campo_sei").style.display = "block";
         document.getElementById("sei").style.display = "block";
     } 

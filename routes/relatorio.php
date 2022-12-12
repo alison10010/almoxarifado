@@ -8,3 +8,6 @@ Route::get('/relatorio/entrada', [RelatorioController::class, 'relatorioPageEntr
 
 Route::get('/relatorio/entradaSimplificado', [RelatorioController::class, 'relatorioSimplificado'])->name('relatorio.relatorioSimplificado'); // PAGE DE RELATORIO ESTOQUE.
 Route::get('/relatorio/relatorioResumoEstoquePDF/{opcao?}', [RelatorioController::class, 'relatorioResumoEstoquePDF'])->name('relatorio.relatorioResumoEstoquePDF'); // PAGE DE RELATORIO ESTOQUE.
+
+
+Route::get('/relatorio/saidaDetalhe', function () { return view('relatorio.saida.saidaDetalhe'); })->name('saida.saidaDetalhe'); // PAGE DE DETALHES DE SAIDA.
