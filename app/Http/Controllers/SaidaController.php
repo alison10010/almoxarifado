@@ -23,7 +23,7 @@ class SaidaController extends Controller
     public function saidaStore(Request $request, SaidaRepository $model){
         try {
             $saida = $model->salva($request);
-            return view('relatorio.saida.saidaDetalhe', ['saida' => $saida]);
+            return view('movimentacao.saida.saidaDetalhe', ['saida' => $saida]);
         } catch (\Throwable $th) {
             return redirect('/movimentacao/saida')->with('error', 'Erro ao gerar saída, tente novamente!'); // REDIRECIONA PARA A HOME COM MSG
         }

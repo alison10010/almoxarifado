@@ -10,3 +10,5 @@ Route::get('/movimentacao/saida', function () { return view('movimentacao.saida.
 Route::get('/movimentacao/saida/{id}', [SaidaController::class, 'saidaForm'])->name('saida.saidaForm'); // PAGE DE SAIDA DE MATERIAL.
 
 Route::post('/movimentacao/saidaMaterial', [SaidaController::class, 'saidaStore'])->name('saida.store'); // SALVA SAIDA DE MATERIAL
+
+Route::get('/movimentacao/saida/saidaDetalhe', function () { return view('movimentacao.saida.saidaDetalhe'); })->name('saida.saidaDetalhe'); // PAGE DE DETALHES DE SAIDA. 
