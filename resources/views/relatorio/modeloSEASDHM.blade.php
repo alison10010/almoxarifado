@@ -1,17 +1,8 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>@yield('title')</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/css/style.css" rel="stylesheet">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  
-  <link href="/css/estiloManual.css" rel="stylesheet">
-
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
     p{
         font-size: 12px;
@@ -34,7 +25,7 @@
     tr:nth-child(even){background-color: #f2f2f2}
     
     .texto{
-      font-size: 13px;
+      font-size: 12px;
     }
     
     .head {
@@ -45,159 +36,20 @@
     }
 
     .titulo{
-      margin-left: 90px;
+      margin-left: 95px;
       line-height: 1.5;
-      font-size: 15px;
+      font-size: 13px;
     }
     .subtitulo{
-      font-size: 12px;
+      font-size: 11px;
     }
-    
-    </style>
 
+</style>
 </head>
 <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <img  class="navbar-brand" src="/img/organizacao.svg" style="margin-left: 10px;padding: 0px 10px;">
-      </div>
-      <ul class="nav navbar-nav">
-        <li ><a href="/dashboard">Inicio</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros &nbsp;<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Cadastro de Materias</a>
-              <ul class="subMenuColor">
-                <li><a href="{{route('materiais.inclusao')}}">Inclusão de Materiais</a></li>
-                <li><a href="{{route('materiais.gerenciar')}}">Gerenciar</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Cadastro de Grupos</a>
-              <ul class="subMenuColor">
-                <li><a href="{{route('grupos.inclusao')}}">Inclusão de Grupo</a></li>
-                <li><a href="{{route('grupos.gerenciar')}}">Gerenciar</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
 
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Movimentação &nbsp;<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Material</a>
-              <ul class="subMenuColor">
-                <li><a href="{{route('entrada.material')}}">Entrada de Material</a></li>
-                <li><a href="{{route('saida.material')}}">Saída de Material</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatorio &nbsp;<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Material</a>
-              <ul class="subMenuColor">                
-                <li><a href="{{route('relatorio.material')}}">Entrada de Material</a></li>
-                <li><a href="#">Saída de Material</a></li>
-              </ul>
-            </li>
-            <li><a href="{{route('relatorio.relatorioSimplificado')}}">Estoque</a></li>
-          </ul>
-        </li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <label style="margin-top: 15px;color: #FFF">
-            @auth
-              {{ auth()->user()->name }}
-            @endauth
-          </label>
-        </li>
-
-        <li><a>|</a></li>
-        <li>
-            <form action="{{route('logout')}}" method="POST" style="margin-top: 15px;padding-right: 30px;">
-              @csrf
-              <a href="/logout" id="sair" onclick="event.preventDefault(); this.closest('form').submit();" style="color: #FFF;text-decoration: none">Sair</a>
-            </form>    
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
-  <main>
-
-      <center><button class="btn btn-primary" name="b_print" onClick="printdiv('div_print');">Clique para imprimir</button></center>
-
-      <br />
-
-      <div style="overflow-x:auto;max-width: 50%; margin-left: 25%; padding: 5px 10px 5px 10px !important; border: 1px solid rgb(184, 173, 173);">
-
-      <center><img  src="/img/brasao_acre.svg" style="width: 10%"></center>
-    
-      <div class="head">
-        <p style="font-size: 12px">Número de sei: <b>{{ $saida->num_sei }}</b></p>                            
-        <p style="font-size: 12px">Grupo: <b>{{ $saida->material->grupo->nome }}</b></p>                  
-      </div>
-    
-      <div class="head">
-        <p>
-          Destinatário: <b>{{ $saida->destinatario }}</b>
-        </p>
-        <p>
-          Identificador da saída: <b>{{ $saida->id }}</b>
-        </p>
-        <p>Saída gerada em:<b> @php echo date('d/m/Y H:i'); @endphp </b></p>
-      </div> 
-
-      <div class="head">
-        <p>
-          Operação: <b>Saída de material</b></b>
-        </p>
-        <p>
-      </div>
-      <hr style="margin-top: 0px">
-        <table>
-          <thead>
-              <tr>
-                <th scope="col" style="width: 8%"><center>Cód. do material</center></th>
-                <th scope="col" style="width: 15%">Material</th>            
-                <th scope="col" style="width: 8%"><center> Quant. Saída (-)</center></th>
-                <th scope="col" style="width: 20%">Detalhes do material</th>
-              </tr>
-          </thead>
-          <tbody>       
-                <tr>                                   
-                    <td><center>{{ $saida->material->id }}</center></td>
-                    <td>{{ $saida->material->nome }}</td>
-                    <td><center>{{ $saida->quant_saida }}</center></td>
-                    <td>{{ $saida->material->descricao }}</td>
-                </tr>        
-          </tbody>
-        </table>
-        <br />
-        <div class="head">
-          <p>
-            Observação: {{ $saida->observacao }}
-        </div>
-    
-        <div style="margin-top: 30vh">
-          <center>
-            ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-            <br />
-            Assinatura</br>
-          </center>
-        </div>   
-    
-    </div>
-    <br />
-  </main>
-
-
-{{-- DIV IMPRIMIR - INICIO --}}
-
-<div style="overflow-x:auto;display: none;" id="div_print">
+<div style="overflow-x:auto;" id="div_print">
 
   <div class="head">
     <div>
@@ -205,73 +57,79 @@
         <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
       </div>
       <br />
-      <p class="titulo" style="margin-top: -7px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
+      <p class="titulo" style="margin-top: -5px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
     </div>
     <p class="subtitulo" align="right">
       SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
     </p>
   </div>
 
-  <p style="font-size: 14px;margin-right: 10px;margin-top: -8px" align="right">
+  <p style="font-size: 14px;margin-right: 10px;margin-top: -15px" align="right">
     <b>SEASDHM</b>
   </p>
 
   <center>
-    <img  src="/img/linha.png" style="width: 100%;">
+    <img  src="/img/linha.png" style="width: 100%;height: 5px;" >
   </center>
   <br />
+
   <div class="head">
-    <p class="texto">Número de sei: <b>{{ $saida->num_sei }}</b></p>                            
-    <p class="texto">Grupo: <b>{{ $saida->material->grupo->nome }}</b></p>                  
+        <p style="font-size: 12px"><b>Relatório de entrada de materiais</b></p>
+        <p style="font-size: 12px">
+            @php
+                echo date('d/m/Y H:i'); 
+            @endphp
+        </p>
   </div>
 
   <div class="head">
-    <p class="texto">
-      Destinatário: <b>{{ $saida->destinatario }}</b>
-    </p>
-    <p class="texto">
-      Identificador da saída: <b>{{ $saida->id }}</b>
-    </p>
-    <p class="texto">Saída gerada em:<b> @php echo date('d/m/Y H:i'); @endphp </b></p>
-  </div> 
-  <div class="head">
-    <p class="texto">
-      Operação: <b>Saída de material</b></b>
-    </p>
-    <p>
-  </div>
-  <hr style="margin-top: 0px">
-    <table style="font-size: 12px;">
+    
+    <div class="head">
+      @if(isset($entrada['periodo']))
+          <p>{{$entrada['periodo']}}</p>
+      @endif
+    </div>
+
+    @if(isset($entrada['tipo']))
+      <p style="font-size: 12px">Tipo material: {{$entrada['tipo']}}</p>
+    @endif
+    
+</div>
+    @if(isset($entrada['totalGeral']))
+        <p style="font-size: 12px">Total geral de entrada: {{$entrada['totalGeral']}}</p>
+    @endif
+
+<hr>
+    <table>
       <thead>
           <tr>
-            <th scope="col" style="width: 8%"><center>Cód. do material</center></th>
-            <th scope="col" class="texto" style="width: 15%">Material</th>            
-            <th scope="col" class="texto" style="width: 10%"><center> Quant. Saída (-)</center></th>
-            <th scope="col" class="texto" style="width: 20%">Detalhes do material</th>
+            <th scope="col" class="texto" style="width: 15%">Nome do Material</th>
+            <th scope="col" class="texto" style="width: 10%"><center>Identificação</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Entrada (+)</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Data entrada</center></th>
+            <th scope="col" class="texto" style="width: 10%">Usuário</th>
           </tr>
       </thead>
       <tbody>       
-            <tr>                                   
-                <td class="texto"><center>{{ $saida->material->id }}</center></td>
-                <td class="texto">{{ $saida->material->nome }}</td>
-                <td class="texto"><center>{{ $saida->quant_saida }}</center></td>
-                <td class="texto">{{ $saida->material->descricao }}</td>
-            </tr>        
+        @if(isset($entrada['material'])) 
+          @foreach ($entrada['material'] as $lista)
+              <tr>                   
+                  <td class="texto">{{ $lista->material->nome }}</td>
+                  <td class="texto"><center>{{ $lista->material->id }}</center></td>
+                  <td class="texto"><center>{{ $lista->quantidade }}</center></td>
+                  <td class="texto"><center>{{ date('d/m/Y H:i', strtotime($lista->created_at)) }}</center></td> 
+                  <td class="texto" class="capitalize">{{ $lista->user->name }}</td>             
+              </tr>
+          @endforeach
+        
       </tbody>
     </table>
-    <br />
-    <div class="head">
-      <p class="texto">
-        Observação: {{ $saida->observacao }}
-    </div>
+          @if(count($entrada['material']) == 0)
+              <p style="color: red" class="texto" style="font-size: 12px">Não foi encontrado relatório de entrada do material.</p>
+          @endif
+        @endif
 
-    <div style="margin-top: 40vh">
-      <center>
-        ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-        <br />
-        Assinatura</br>
-      </center>
-    </div>
+
 </div>
 
 <script language="javascript">
@@ -286,10 +144,8 @@
       return false;
   }
 </script>
-
-{{-- DIV IMPRIMIR - FIM --}}
-    
-
+<br />
+<center><button name="b_print" onClick="printdiv('div_print');">Imprimir</button></center>
 
 </body>
 </html>

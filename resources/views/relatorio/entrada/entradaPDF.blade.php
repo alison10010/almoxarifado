@@ -4,34 +4,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-p{
-    font-size: 13px;
-}
-p,tr,h2,h3,h4{
-    font-family: sans-serif;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 12px;
-}
-th, td {
-  text-align: left;
-  padding: 8px;
-  border: 1px solid #ddd;
-  font-size: 12px;
-}
-tr:nth-child(even){background-color: #f2f2f2}
+    p{
+        font-size: 12px;
+    }
+    p,tr,h2,h3,h4{
+        font-family: sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+    tr:nth-child(even){background-color: #f2f2f2}
+    
+    .texto{
+      font-size: 12px;
+    }
+    
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 10px;
+    }
 
-
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 10px;
-}
+    .titulo{
+      margin-left: 95px;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    .subtitulo{
+      font-size: 11px;
+    }
 
 </style>
 </head>
@@ -40,7 +51,27 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 <div style="overflow-x:auto;" id="div_print">
 
-  <center><img  class="navbar-brand" src="/img/brasao_acre.svg" style="width: 10%"></center>
+  <div class="head">
+    <div>
+      <div>
+        <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
+      </div>
+      <br />
+      <p class="titulo" style="margin-top: -5px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
+    </div>
+    <p class="subtitulo" align="right">
+      SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
+    </p>
+  </div>
+
+  <p style="font-size: 14px;margin-right: 10px;margin-top: -15px" align="right">
+    <b>SEASDHM</b>
+  </p>
+
+  <center>
+    <img  src="/img/linha.png" style="width: 100%;height: 5px;" >
+  </center>
+  <br />
 
   <div class="head">
         <p style="font-size: 12px"><b>Relatório de entrada de materiais</b></p>
@@ -72,29 +103,29 @@ tr:nth-child(even){background-color: #f2f2f2}
     <table>
       <thead>
           <tr>
-            <th scope="col" style="width: 15%">Nome do Material</th>
-            <th scope="col" style="width: 10%"><center>Identificação</center></th>
-            <th scope="col" style="width: 10%"><center>Entrada (+)</center></th>
-            <th scope="col" style="width: 10%"><center>Data entrada</center></th>
-            <th scope="col" style="width: 10%">Usuário</th>
+            <th scope="col" class="texto" style="width: 15%">Nome do Material</th>
+            <th scope="col" class="texto" style="width: 10%"><center>Identificação</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Entrada (+)</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Data entrada</center></th>
+            <th scope="col" class="texto" style="width: 10%">Usuário</th>
           </tr>
       </thead>
       <tbody>       
         @if(isset($entrada['material'])) 
           @foreach ($entrada['material'] as $lista)
               <tr>                   
-                  <td>{{ $lista->material->nome }}</td>
-                  <td><center>{{ $lista->material->id }}</center></td>
-                  <td><center>{{ $lista->quantidade }}</center></td>
-                  <td><center>{{ date('d/m/Y H:i', strtotime($lista->created_at)) }}</center></td> 
-                  <td class="capitalize">{{ $lista->user->name }}</td>             
+                  <td class="texto">{{ $lista->material->nome }}</td>
+                  <td class="texto"><center>{{ $lista->material->id }}</center></td>
+                  <td class="texto"><center>{{ $lista->quantidade }}</center></td>
+                  <td class="texto"><center>{{ date('d/m/Y H:i', strtotime($lista->created_at)) }}</center></td> 
+                  <td class="texto" class="capitalize">{{ $lista->user->name }}</td>             
               </tr>
           @endforeach
         
       </tbody>
     </table>
           @if(count($entrada['material']) == 0)
-              <p style="color: red" style="font-size: 12px">Não foi encontrado relatório de entrada do material.</p>
+              <p style="color: red" class="texto" style="font-size: 12px">Não foi encontrado relatório de entrada do material.</p>
           @endif
         @endif
 

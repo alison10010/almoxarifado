@@ -34,7 +34,7 @@
     tr:nth-child(even){background-color: #f2f2f2}
     
     .texto{
-      font-size: 13px;
+      font-size: 12px;
     }
     
     .head {
@@ -45,12 +45,12 @@
     }
 
     .titulo{
-      margin-left: 90px;
+      margin-left: 95px;
       line-height: 1.5;
-      font-size: 15px;
+      font-size: 13px;
     }
     .subtitulo{
-      font-size: 12px;
+      font-size: 11px;
     }
     
     </style>
@@ -205,24 +205,24 @@
         <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
       </div>
       <br />
-      <p class="titulo" style="margin-top: -7px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
+      <p class="titulo" style="margin-top: -5px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
     </div>
     <p class="subtitulo" align="right">
       SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
     </p>
   </div>
 
-  <p style="font-size: 14px;margin-right: 10px;margin-top: -8px" align="right">
+  <p style="font-size: 14px;margin-right: 10px;margin-top: -15px" align="right">
     <b>SEASDHM</b>
   </p>
 
   <center>
-    <img  src="/img/linha.png" style="width: 100%;">
+    <img  src="/img/linha.png" style="width: 100%;height: 5px;">
   </center>
   <br />
   <div class="head">
-    <p class="texto">Número de sei: <b>{{ $saida->num_sei }}</b></p>                            
-    <p class="texto">Grupo: <b>{{ $saida->material->grupo->nome }}</b></p>                  
+    <p class="texto">Número de sei: <b>{{ $saida->num_sei }}</b></p>
+    <p class="texto">Grupo: <b>{{ $saida->material->grupo->nome }}</b></p>
   </div>
 
   <div class="head">

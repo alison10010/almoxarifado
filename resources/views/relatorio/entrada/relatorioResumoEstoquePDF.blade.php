@@ -4,41 +4,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-p{
+  p{
+      font-size: 12px;
+  }
+  p,tr,h2,h3,h4{
+      font-family: sans-serif;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .texto{
+    font-size: 12px;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .titulo{
+    margin-left: 95px;
+    line-height: 1.5;
     font-size: 13px;
-}
-p,tr,h2,h3,h4{
-    font-family: sans-serif;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 12px;
-}
-th, td {
-  text-align: left;
-  padding: 8px;
-  border: 1px solid #ddd;
-  font-size: 12px;
-}
-tr:nth-child(even){background-color: #f2f2f2}
-
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 10px;
-}
-
-.titulo{
-  margin-left: 90px;
-  line-height: 1.5;
-}
-.subtitulo{
-  font-size: 11px;
-}
+  }
+  .subtitulo{
+    font-size: 11px;
+  }
 
 </style>
 </head>
@@ -83,27 +87,27 @@ tr:nth-child(even){background-color: #f2f2f2}
     <table> 
       <thead>
           <tr>
-            <th scope="col" style="width: 10%"><center>Identificação</center></th>
-            <th scope="col" style="width: 15%">Nome do Material</th>            
-            <th scope="col" style="width: 10%"><center>Estoque Atual</center></th>
-            <th scope="col" style="width: 10%"><center>Estoque mínimo</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Identificação</center></th>
+            <th scope="col" class="texto" style="width: 15%">Nome do Material</th>            
+            <th scope="col" class="texto" style="width: 10%"><center>Estoque Atual</center></th>
+            <th scope="col" class="texto" style="width: 10%"><center>Estoque mínimo</center></th>
           </tr>
       </thead>
       <tbody>       
         @if(isset($entrada['material'])) 
           @foreach ($entrada['material'] as $lista)
               <tr style="background: {{ $lista->estoque_atual > $lista->estoque_minimo ? '' : '#ff00003d' }};">                   
-                <td><center>{{ $lista->id }}</center></td> 
-                <td>{{ $lista->nome }}</td>        
-                <td><center>{{ $lista->estoque_atual }}</center></td>            
-                <td><center>{{ $lista->estoque_minimo }}</center></td>            
+                <td class="texto"><center>{{ $lista->id }}</center></td> 
+                <td class="texto">{{ $lista->nome }}</td>        
+                <td class="texto"><center>{{ $lista->estoque_atual }}</center></td>            
+                <td class="texto"><center>{{ $lista->estoque_minimo }}</center></td>            
               </tr>
           @endforeach
         
       </tbody>
     </table>
           @if(count($entrada['material']) == 0)
-              <p style="color: red">Não foi encontrado relatório de estoque.</p>
+              <p class="texto" style="color: red">Não foi encontrado relatório de estoque.</p>
           @endif
         @endif
 </div>
