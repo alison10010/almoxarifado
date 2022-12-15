@@ -21,9 +21,9 @@ th, td {
   text-align: left;
   padding: 8px;
   border: 1px solid #ddd;
+  font-size: 12px;
 }
 tr:nth-child(even){background-color: #f2f2f2}
-
 
 .head {
   display: flex;
@@ -32,18 +32,44 @@ tr:nth-child(even){background-color: #f2f2f2}
   margin-right: 10px;
 }
 
+.titulo{
+  margin-left: 90px;
+  line-height: 1.5;
+}
+.subtitulo{
+  font-size: 11px;
+}
+
 </style>
 </head>
 <body>
 
 
-<div style="overflow-x:auto;">
-
-  <center><img  class="navbar-brand" src="/img/brasao_acre.svg" style="width: 10%"></center>
+<div style="overflow-x:auto;" id="div_print">
 
   <div class="head">
-        <p style="font-size: 14px"><b>Relatório de estoque</b></p>
-        <p>
+    <div>
+      <div>
+        <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
+      </div>
+      <br />
+      <p class="titulo" style="margin-top: -8px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
+    </div>
+    <p class="subtitulo" align="right">
+      SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
+    </p>
+  </div>
+
+  <p style="font-size: 14px;margin-right: 10px;margin-top: -8px" align="right">
+    <b>SEASDHM</b>
+  </p>
+
+<center>
+  <img  class="navbar-brand" src="/img/linha.png" style="width: 100%;height: 5px;">
+</center>
+  <div class="head">
+        <p style="font-size: 12px"><b>Relatório de estoque</b></p>
+        <p style="font-size: 12px">
             @php
                 echo date('d/m/Y H:i'); 
             @endphp
@@ -51,10 +77,10 @@ tr:nth-child(even){background-color: #f2f2f2}
   </div>
 
     @if(isset($entrada['totalGeral']))
-        <p>Total geral de material: {{$entrada['totalGeral']}}</p>
+        <p style="font-size: 12px">Total geral de material: {{$entrada['totalGeral']}}</p>
     @endif
 <hr>
-    <table>
+    <table> 
       <thead>
           <tr>
             <th scope="col" style="width: 10%"><center>Identificação</center></th>
@@ -80,9 +106,22 @@ tr:nth-child(even){background-color: #f2f2f2}
               <p style="color: red">Não foi encontrado relatório de estoque.</p>
           @endif
         @endif
-
-
 </div>
+
+<script language="javascript">
+  function printdiv(printpage) {
+      var headstr = "<html><head><title></title></head><body>";
+      var footstr = "</body>";
+      var newstr = document.all.item(printpage).innerHTML;
+      var oldstr = document.body.innerHTML;
+      document.body.innerHTML = headstr + newstr + footstr;
+      window.print();
+      document.body.innerHTML = oldstr;
+      return false;
+  }
+</script>
+<br />
+<center><button name="b_print" onClick="printdiv('div_print');">Imprimir</button></center>
 
 </body>
 </html>

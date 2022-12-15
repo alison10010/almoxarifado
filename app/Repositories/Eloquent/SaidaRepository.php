@@ -22,9 +22,9 @@ class SaidaRepository extends AbstractRepository{
         $saida->possui_sei = $request['possui_sei'];
         $saida->num_sei = $request['num_sei'];
         $saida->destinatario = $request['destinatario'];
-        $saida->observacao = $request['observacao'];     
+        $saida->observacao = $request['observacao'];
         
-        if($request['possui_sei'] == 'Nao'){
+        if($request['possui_sei'] == 'Nao' || $request['num_sei'] == null){
             $saida->num_sei = 'xxxx.xxxxx.xxxxx/xxxx-xx';
         }
 

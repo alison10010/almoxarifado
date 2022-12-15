@@ -21,6 +21,7 @@ th, td {
   text-align: left;
   padding: 8px;
   border: 1px solid #ddd;
+  font-size: 12px;
 }
 tr:nth-child(even){background-color: #f2f2f2}
 
@@ -37,13 +38,13 @@ tr:nth-child(even){background-color: #f2f2f2}
 <body>
 
 
-<div style="overflow-x:auto;">
+<div style="overflow-x:auto;" id="div_print">
 
   <center><img  class="navbar-brand" src="/img/brasao_acre.svg" style="width: 10%"></center>
 
   <div class="head">
-        <p style="font-size: 14px"><b>Relatório de entrada de materiais</b></p>
-        <p>
+        <p style="font-size: 12px"><b>Relatório de entrada de materiais</b></p>
+        <p style="font-size: 12px">
             @php
                 echo date('d/m/Y H:i'); 
             @endphp
@@ -58,14 +59,13 @@ tr:nth-child(even){background-color: #f2f2f2}
       @endif
     </div>
 
-    <p>
-      @if(isset($entrada['tipo']))
-        Tipo material: {{$entrada['tipo']}}
-      @endif
-    </p>
+    @if(isset($entrada['tipo']))
+      <p style="font-size: 12px">Tipo material: {{$entrada['tipo']}}</p>
+    @endif
+    
 </div>
     @if(isset($entrada['totalGeral']))
-        <p>Total geral de entrada: {{$entrada['totalGeral']}}</p>
+        <p style="font-size: 12px">Total geral de entrada: {{$entrada['totalGeral']}}</p>
     @endif
 
 <hr>
@@ -94,12 +94,27 @@ tr:nth-child(even){background-color: #f2f2f2}
       </tbody>
     </table>
           @if(count($entrada['material']) == 0)
-              <p style="color: red">Não foi encontrado relatório de entrada do material.</p>
+              <p style="color: red" style="font-size: 12px">Não foi encontrado relatório de entrada do material.</p>
           @endif
         @endif
 
 
 </div>
+
+<script language="javascript">
+  function printdiv(printpage) {
+      var headstr = "<html><head><title></title></head><body>";
+      var footstr = "</body>";
+      var newstr = document.all.item(printpage).innerHTML;
+      var oldstr = document.body.innerHTML;
+      document.body.innerHTML = headstr + newstr + footstr;
+      window.print();
+      document.body.innerHTML = oldstr;
+      return false;
+  }
+</script>
+<br />
+<center><button name="b_print" onClick="printdiv('div_print');">Imprimir</button></center>
 
 </body>
 </html>
