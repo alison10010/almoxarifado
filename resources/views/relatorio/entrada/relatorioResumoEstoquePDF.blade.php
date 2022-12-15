@@ -23,11 +23,11 @@
     border: 1px solid #ddd;
   }
   tr:nth-child(even){background-color: #f2f2f2}
-
+  
   .texto{
     font-size: 12px;
   }
-
+  
   .head {
     display: flex;
     justify-content: space-between;
@@ -57,20 +57,21 @@
         <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
       </div>
       <br />
-      <p class="titulo" style="margin-top: -8px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
+      <p class="titulo" style="margin-top: -5px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
     </div>
     <p class="subtitulo" align="right">
       SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
     </p>
   </div>
 
-  <p style="font-size: 14px;margin-right: 10px;margin-top: -8px" align="right">
+  <p style="font-size: 14px;margin-right: 10px;margin-top: -15px" align="right">
     <b>SEASDHM</b>
   </p>
 
 <center>
   <img  class="navbar-brand" src="/img/linha.png" style="width: 100%;height: 5px;">
 </center>
+<br />
   <div class="head">
         <p style="font-size: 12px"><b>Relatório de estoque</b></p>
         <p style="font-size: 12px">
