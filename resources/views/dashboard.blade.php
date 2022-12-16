@@ -1,5 +1,5 @@
 @extends('layouts.template')  {{-- USA O LAYOUT PADRÃO --}}
-@section('title', 'Adicionar Material') {{-- TITULO DA PAGE --}}
+@section('title', 'Almoxarifado') {{-- TITULO DA PAGE --}}
 
 @section('content') {{-- CONTEUDO DA PAGE - INICIO --}}
 

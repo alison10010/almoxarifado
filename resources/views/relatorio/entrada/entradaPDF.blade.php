@@ -1,77 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+@extends('relatorio.modeloRelatorio')  {{-- USA O LAYOUT PADRÃO --}}
 
-    p{
-        font-size: 12px;
-    }
-    p,tr,h2,h3,h4{
-        font-family: sans-serif;
-    }
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-      width: 100%;
-      border: 1px solid #ddd;
-      font-size: 14px;
-    }
-    th, td {
-      text-align: left;
-      padding: 8px;
-      border: 1px solid #ddd;
-    }
-    tr:nth-child(even){background-color: #f2f2f2}
-    
-    .texto{
-      font-size: 12px;
-    }
-    
-    .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-right: 10px;
-    }
-
-    .titulo{
-      margin-left: 95px;
-      line-height: 1.5;
-      font-size: 13px;
-    }
-    .subtitulo{
-      font-size: 11px;
-    }
-
-</style>
-</head>
-<body>
-
-
-<div style="overflow-x:auto;" id="div_print">
-
-  <div class="head">
-    <div>
-      <div>
-        <img src="/img/brasao_acre.svg" style="width: 30%" align="left">
-      </div>
-      <br />
-      <p class="titulo" style="margin-top: -5px"><b>GOVERNO DO ESTADO DO <br />ACRE</b></p>
-    </div>
-    <p class="subtitulo" align="right">
-      SECRETARIA DE ESTADO DE ASSISTÊNCIA SOCIAL, <br />DOS DIREITOS HUMANOS E DE POLÍTICAS PARA AS <br />MULHERES<br />      
-    </p>
-  </div>
-
-  <p style="font-size: 14px;margin-right: 10px;margin-top: -15px" align="right">
-    <b>SEASDHM</b>
-  </p>
-
-  <center>
-    <img  src="/img/linha.png" style="width: 100%;height: 5px;" >
-  </center>
-  <br />
+@section('content') {{-- CONTEUDO DA PAGE - INICIO --}}
 
   <div class="head">
         <p style="font-size: 12px"><b>Relatório de entrada de materiais</b></p>
@@ -81,9 +10,7 @@
             @endphp
         </p>
   </div>
-
-  <div class="head">
-    
+  <div class="head">    
     <div class="head">
       @if(isset($entrada['periodo']))
           <p>{{$entrada['periodo']}}</p>
@@ -94,12 +21,11 @@
       <p style="font-size: 12px">Tipo material: {{$entrada['tipo']}}</p>
     @endif
     
-</div>
+  </div>
     @if(isset($entrada['totalGeral']))
         <p style="font-size: 12px">Total geral de entrada: {{$entrada['totalGeral']}}</p>
     @endif
-
-<hr>
+    <hr>
     <table>
       <thead>
           <tr>
@@ -124,28 +50,9 @@
         
       </tbody>
     </table>
-          @if(count($entrada['material']) == 0)
+        @if(count($entrada['material']) == 0)
               <p style="color: red" class="texto" style="font-size: 12px">Não foi encontrado relatório de entrada do material.</p>
-          @endif
         @endif
+    @endif
 
-
-</div>
-
-<script language="javascript">
-  function printdiv(printpage) {
-      var headstr = "<html><head><title></title></head><body>";
-      var footstr = "</body>";
-      var newstr = document.all.item(printpage).innerHTML;
-      var oldstr = document.body.innerHTML;
-      document.body.innerHTML = headstr + newstr + footstr;
-      window.print();
-      document.body.innerHTML = oldstr;
-      return false;
-  }
-</script>
-<br />
-<center><button name="b_print" onClick="printdiv('div_print');">Imprimir</button></center>
-
-</body>
-</html>
+@endsection  {{-- CONTEUDO DA PAGE - FIM --}}
