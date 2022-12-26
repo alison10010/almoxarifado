@@ -21,13 +21,6 @@
     </div>
 
     <div class="form-check" id="buscaMaterial" style="display: none;">
-      <br /> 
-      <input type="radio" class="form-check-input" id="idendificador" name="opcao" value="id" checked onclick="buscaMaterial('idendificador')">
-      <label class="form-check-label" for="idendificador">N° de Identificação</label>
-
-      <input type="radio" class="form-check-input" id="NomeMat" name="opcao" value="NomeMat" onclick="buscaMaterial('NomeMat')" style="margin-left: 12px">
-      <label class="form-check-label" for="NomeMat">Nome do material</label>
-
       <div class="form-group" style="margin-top: 10px">
         <input type="number" name="material" placeholder="Digite a Identificação" class="form-control" id="material" required value="{{ old('material') }}" style="max-width: 28rem;">
       </div>

@@ -44,6 +44,7 @@ function saidaMaterial(opcao){
 
     if(opcao === 'todos'){
         document.getElementById("buscaMaterial").style.display = "none";
+        document.getElementById("material").value = "";
     }
     if(opcao === 'especifico'){
         document.getElementById("buscaMaterial").style.display = "block";

@@ -94,6 +94,9 @@ class SaidaRepository extends AbstractRepository{
         if($opcaoSaida == 'todos'){  // RETORNA SEM MATERIAL ESPECIFICO
             return self::allSaida($dataOne, $dataTwo);
         }
+        if($opcaoSaida == 'especifico'){  // RETORNA SEM MATERIAL ESPECIFICO
+            return self::idSaida($dataOne, $dataTwo, $material);
+        }
   
     }
 
@@ -124,18 +127,42 @@ class SaidaRepository extends AbstractRepository{
             $i += 1;
         }
 
-        $tipo = 'Todos';
-
         return (['saida' => $saida, 'periodo' => $periodo, 'totalGeral' => $totalGeral]);
     }
 
 
-    // METODO DE BUSCAR PELO ID OU NOME
-    // public function buscaSaida($identificador)
-    // {
-    //     $saida = Saida::where([['id', '=', $identificador]])->orderBy('id', 'DESC')->get();
-    //     return $saida;
-    // }
+    // METODO DE BUSCAR PELO ID
+    public function idSaida($dataOne, $dataTwo, $identificador)
+    {
+        if(!$dataOne){
+            $saida = Saida::where([['material_id', '=', $identificador]])->orderBy('id', 'DESC')->get();
+            $periodo = 'Saída de Materiais sem período definido';
+        }else{
+            $dataTwoF = date('Y-m-d 00:00:00' , strtotime("+1 days", strtotime($dataTwo)));
+            $saida = Saida::where([['created_at', '>', $dataOne]])
+            ->where('created_at', '<', $dataTwoF)
+            ->where('material_id', '=', $identificador)
+            ->orderBy('id', 'DESC')->get();
+
+            // FORMATA BR
+            $dataOne = date('d/m/Y' , strtotime($dataOne));
+            $dataTwo = date('d/m/Y' , strtotime($dataTwo));
+
+            $periodo = 'Saída de Materiais no Período de '.$dataOne.' a '.$dataTwo;
+        }
+
+        // N° TOTAL DE SAIDA
+        $i = 0;  
+        $totalGeral = 0;
+        foreach($saida as $row) {
+            $totalGeral += $row['quant_saida'];
+            $i += 1;
+        }
+
+        return (['saida' => $saida, 'periodo' => $periodo, 'totalGeral' => $totalGeral]);
+
+        return $saida;
+    }
 
      // METODO DE SALVAR NO BD
      public function updateSaida(Request $request)

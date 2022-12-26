@@ -145,7 +145,11 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaida">
             Modificar 
           </button>
-          @endif
+        @endif
+        @if(isset($edit))
+          <!-- Button trigger modal -->
+          <a type="button" class="btn btn-primary" href="/img/assinaturas/{{ $saida->image }}" target="_blank">Ver assinatura</button></a>
+        @endif
       </center>
 
       <hr style="max-width: 50%" />
