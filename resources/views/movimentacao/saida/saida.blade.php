@@ -48,16 +48,20 @@
     <tbody>  
         @foreach ($material as $listas)
           <tr> 
-              <td>{{ $listas->id }}</td>
+              <td><center>{{ $listas->id }}</center></td>
               <td>{{ $listas->nome }}</td>
               <td class="centro">{{ $listas->estoque_atual }}</td>
               <td class="centro">{{ $listas->estoque_minimo }}</td>
               <td>{{ $listas->descricao }}</td>
               <td class="centro">{{ $listas->grupo->nome }}</td>
-              <td class="centro">
+              <td class="centro">                
+                @if($listas->estoque_atual <= 0)
+                    <p style="color: red">Sem estoque</p>                    
+                @else
                   <a href="{{route('saida.saidaForm', $listas->id)}}"> 
                     <img src="/img/saida.svg" width="30px">
                   </a>
+                @endif                  
               </td>
           </tr>
         @endforeach

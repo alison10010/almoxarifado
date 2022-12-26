@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EntradaController;
+use App\Http\Controllers\SaidaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {  // PAGINA PARA CRIAR UM EVENTO P
     Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
 
     Route::get('/relatorioEntrada/{identificacao?}{dataOne?}{dataTwo?}', [EntradaController::class, 'relatorioEntradaPDF'])->name('relatorio.entradaPDF');
+
+    Route::get('/relatorioSaida/{saida?}{identificacao?}{dataOne?}{dataTwo?}', [SaidaController::class, 'relatorioSaidaPDF'])->name('relatorio.saidaPDF');
     
 
 });

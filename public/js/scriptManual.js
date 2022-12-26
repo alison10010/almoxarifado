@@ -39,6 +39,18 @@ function buscaMaterial(opcao){
     }   
 }
 
+// MOSTRA CAMPO PARA RELATORIO DE SAIDA ESPECIFICO
+function saidaMaterial(opcao){
+
+    if(opcao === 'todos'){
+        document.getElementById("buscaMaterial").style.display = "none";
+    }
+    if(opcao === 'especifico'){
+        document.getElementById("buscaMaterial").style.display = "block";
+    } 
+
+}
+
 // ENTRADA DE MATERIAL
 function entradaModal(id){ 
     $.ajax({
@@ -69,7 +81,7 @@ function relatorioOpcao(opcao)
     }    
 }
 
-// PEGA OS DADOS DO FORM E PASSA VIA URL PARA O IFRAME DO RELATORIO
+// PEGA OS DADOS DO FORM E PASSA VIA URL PARA O IFRAME DE ENTRADA
 function frameRelatorioEntrada(){
 
     document.getElementById("frame").classList.remove("frame");
@@ -86,6 +98,30 @@ function frameRelatorioEntrada(){
     var dataTwo = DataTwo.value;
     
     var link = '/relatorioEntrada?identificacao='+identificacao+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
+
+    document.getElementById('frame').src = link;
+}
+
+// PEGA OS DADOS DO FORM E PASSA VIA URL PARA O IFRAME DE SAIDA
+function frameRelatorioSaida(){
+
+    document.getElementById("frame").classList.remove("frame");
+
+    var form = document.getElementById('signup-form');
+
+    var Saida = form.elements['opcaoSaida'];
+    var saida = Saida.value;
+
+    var Material = form.elements['material'];
+    var material = Material.value;
+
+    var DataOne = form.elements['dataOne'];
+    var dataOne = DataOne.value;
+
+    var DataTwo = form.elements['dataTwo'];
+    var dataTwo = DataTwo.value;
+    
+    var link = '/relatorioSaida?opcaoSaida='+saida+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
 
     document.getElementById('frame').src = link;
 }

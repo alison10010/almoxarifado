@@ -12,3 +12,7 @@ Route::get('/movimentacao/saida/{id}', [SaidaController::class, 'saidaForm'])->n
 Route::post('/movimentacao/saidaMaterial', [SaidaController::class, 'saidaStore'])->name('saida.store'); // SALVA SAIDA DE MATERIAL
 
 Route::get('/movimentacao/saida/saidaDetalhe', function () { return view('movimentacao.saida.saidaDetalhe'); })->name('saida.saidaDetalhe'); // PAGE DE DETALHES DE SAIDA. 
+ 
+Route::get('/movimentacao/localiza', function () { return view('movimentacao.saida.LocalizaSaida'); })->name('saida.Localiza'); // PAGE DE SAIDA DE MATERIAL PARA EDIÇÃO.
+
+Route::post('/movimentacao/localiza', [SaidaController::class, 'localizaSaidaMaterial'])->name('movimentacao.localizaSaidaMaterial'); // PAGE DE SAIDA DE MATERIAL PARA EDIÇÃO.

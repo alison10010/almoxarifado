@@ -73,6 +73,14 @@
                 <li><a href="{{route('materiais.gerenciar')}}">Gerenciar</a></li>
               </ul>
             </li>
+            {{-- <li><a href="#">Cadastro de Kit´s</a>
+              <ul class="subMenuColor">
+                <li><a href="#">Criação de Kit´s</a></li>
+                <li><a href="#">Alteração de Kit´s</a></li>
+                <li class="divider"></li>
+                <li><a href="">Exclusão de Kit´s</a></li>                
+              </ul>
+            </li> --}}
             <li><a href="#">Cadastro de Grupos</a>
               <ul class="subMenuColor">
                 <li><a href="{{route('grupos.inclusao')}}">Inclusão de Grupo</a></li>
@@ -98,7 +106,9 @@
             <li><a href="#">Material</a>
               <ul class="subMenuColor">                
                 <li><a href="{{route('relatorio.material')}}">Entrada de Material</a></li>
-                <li><a href="#">Saída de Material</a></li>
+                <li><a href="{{route('relatorio.materialSaida')}}">Saída de Material</a></li>
+                <li class="divider"></li>
+                <li><a href="{{route('saida.Localiza')}}">Alterar saída</a></li>
               </ul>
             </li>
             <li><a href="{{route('relatorio.relatorioSimplificado')}}">Estoque</a></li>
@@ -128,13 +138,21 @@
   
   <main>
 
-      <center><button class="btn btn-primary" name="b_print" onClick="printdiv('div_print');">Clique para imprimir</button></center>
+      <center>
+        <button class="btn btn-primary" name="b_print" onClick="printdiv('div_print');">Clique para imprimir</button>
+        @if(isset($edit))
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaida">
+            Modificar 
+          </button>
+          @endif
+      </center>
 
-      <br />
+      <hr style="max-width: 50%" />
 
       <div style="overflow-x:auto;max-width: 50%; margin-left: 25%; padding: 5px 10px 5px 10px !important; border: 1px solid rgb(184, 173, 173);">
-
-      <center><img  src="/img/brasao_acre.svg" style="width: 10%"></center>
+      
+        <center><img  src="/img/brasao_acre.svg" style="width: 10%"></center>
     
       <div class="head">
         <p style="font-size: 12px">Número de sei: <b>{{ $saida->num_sei }}</b></p>                            
@@ -148,7 +166,7 @@
         <p>
           Identificador da saída: <b>{{ $saida->id }}</b>
         </p>
-        <p>Saída gerada em:<b> @php echo date('d/m/Y H:i'); @endphp </b></p>
+        <p>Saída gerada em: <b>{{ date('d/m/y H:i', strtotime($saida->created_at)) }} </b></p>
       </div> 
 
       <div class="head">
@@ -161,10 +179,10 @@
         <table>
           <thead>
               <tr>
-                <th scope="col" style="width: 8%"><center>Cód. do material</center></th>
-                <th scope="col" style="width: 15%">Material</th>            
-                <th scope="col" style="width: 8%"><center> Quant. Saída (-)</center></th>
-                <th scope="col" style="width: 20%">Detalhes do material</th>
+                <th scope="col" style="width: 12%;font-size: 12px"><center>Cód. do material</center></th>
+                <th scope="col" style="width: 15%;font-size: 12px">Material</th>            
+                <th scope="col" style="width: 12%;font-size: 12px"><center> Quant. Saída (-)</center></th>
+                <th scope="col" style="width: 25%;font-size: 12px">Detalhes do material</th>
               </tr>
           </thead>
           <tbody>       
@@ -230,9 +248,9 @@
       Destinatário: <b>{{ $saida->destinatario }}</b>
     </p>
     <p class="texto">
-      Identificador da saída: <b>{{ $saida->id }}</b>
+      Identificador da saída: <b>{{ $saida->id }}</b> 
     </p>
-    <p class="texto">Saída gerada em:<b> @php echo date('d/m/Y H:i'); @endphp </b></p>
+    <p class="texto">Saída gerada em: <b>{{ date('d/m/y H:i', strtotime($saida->created_at)) }} </b></p>
   </div> 
   <div class="head">
     <p class="texto">
@@ -274,6 +292,42 @@
     </div>
 </div>
 
+{{-- Modal de modificar saída - inicio --}}
+<div class="modal fade" id="modalSaida" tabindex="-1" role="dialog" aria-labelledby="modalSaidaLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 35%;">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row" style="max-width: 90%; margin-left: 12px">
+          <form action="{{route('saida.update', $saida->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+            @csrf  
+            @method('PUT') 
+              <label class="form-check-label" for="sei">N° SEI:</label> 
+              <input type="text" name="num_sei" id="sei" placeholder="0000.00000.00000/0000-00" value="{{ $saida->num_sei }}" class="form-control" id="sei" value="{{ old('sei') }}" style="margin-top: 10px;">
+              <br />
+              <label class="form-check-label" for="doc">Adicionar documento assinado:</label> 
+              <div class="imageContainer">
+                <center><img src="/img/assinaturas/{{ $saida->image }}" alt="Selecione uma imagem" id="imgPhoto" style="max-width: 40%"></center>
+              </div>
+
+              <br />
+              <input type="file" id="flImage" name="image" accept="image/*">
+
+              <center>
+              <button class="btn btn-primary" type="submit">Concluir</button>
+              <button class="btn btn-danger" type="reset" data-dismiss="modal">cancelar</button>
+            </center>
+          </form>              
+        </div>
+    </div>
+  </div>
+</div>
+{{-- Modal de modificar saída - fim --}}
+
 <script language="javascript">
   function printdiv(printpage) {
       var headstr = "<html><head><title></title></head><body>";
@@ -285,6 +339,16 @@
       document.body.innerHTML = oldstr;
       return false;
   }
+</script>
+<script src="/js/uploadImage.js"></script>
+<script src="/js/jquery-3.6.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  /* Mascaras desejadas pelo ID */
+  $(function() {
+      $("#sei").mask("9999.99999.99999/9999-99");
+  });
 </script>
 
 {{-- DIV IMPRIMIR - FIM --}}

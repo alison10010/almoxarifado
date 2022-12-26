@@ -48,10 +48,9 @@
         <div class="imageContainer">
             <img src="/img/foto.png" alt="Selecione uma imagem" id="imgPhoto">
         </div>
-    </div>
-
-    <br />
-    <input type="file" id="flImage" name="image" accept="image/*">
+      </div>
+      <br />
+      <input type="file" id="flImage" name="image" accept="image/*">
 
     </div>
 
