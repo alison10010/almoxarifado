@@ -3,7 +3,7 @@
 
 @section('content') {{-- CONTEUDO DA PAGE - INICIO --}}
 
-<div class="card linha" style="margin-top: 4rem;width: 60%; margin-left: 25%">
+<div class="card linha" style="margin-top: 4rem;width: 40%; margin-left: 30%; padding: 30px 1px 0px 30px;" >
   <h4>Saída de Material</h4>
   <br />
   <div class="row">   
@@ -46,41 +46,47 @@
         <label class="form-check-label" for="Observações">Observações:</label> 
         <textarea name="observacao" id="observacao" class="form-control" placeholder="Observações da saída" style="resize: none;width:340px"></textarea>
       </div>
- 
-      <hr >
-      <div class="modal-lado">
-        <div class="form-inline especamento">
-          Material: <label>{{$material->nome}}</label>          
-        </div>
-    
-        <div class="form-inline especamento">
-            Em estoque : <label>{{$material->estoque_atual}}</label> 
-        </div>
-        
-        <div class="form-inline especamento">
-          Grupo: <label>{{$material->grupo->nome}}</label> 
-        </div>
 
-        <div class="form-group especamento">
-          Descrição do material: <label>{{$material->descricao}}</label> 
-        </div>        
+      <hr >
+      <p>
+        <a class="btn btn-info" data-toggle="collapse" href="#detalhes" role="button" aria-expanded="false" aria-controls="detalhes">Detalhes do material</a>
 
         <input type="hidden" name="material_id" value="{{$material->id}}">
-
+      
         <button type="submit" class="btn btn-primary">Gerar saída</button>
 
         <a type="button" class="btn btn-danger" href="{{ route('saida.material') }}">Cancelar</button></a>
-      </div>
 
-      <div class="modal-lado">
-        <div class="max-width">
-          <div class="imageContainer"> 
-            <img src="/img/materiais/{{$material->image}}" alt="Material" id="imgPhoto">
+      </p>
+          <div class="collapse" id="detalhes">
+            <hr >
+            <div class="modal-lado" style="height: 250px;">
+              <div class="form-inline especamento">
+                Material: <label>{{$material->nome}}</label>          
+              </div>
+          
+              <div class="form-inline especamento">
+                  Em estoque : <label>{{$material->estoque_atual}}</label> 
+              </div>
+              
+              <div class="form-inline especamento">
+                Grupo: <label>{{$material->grupo->nome}}</label> 
+              </div>
+      
+              <div class="form-group especamento">
+                Descrição do material: <label>{{$material->descricao}}</label> 
+              </div>        
+              
+            </div>
+      
+            <div class="modal-lado" style="height: 250px;">
+              <div class="max-width">
+                <div class="imageContainer"> 
+                  <img src="/img/materiais/{{$material->image}}" alt="Material" id="imgPhoto">
+                </div>
+            </div>
           </div>
-      </div>
-
-
-
+      <hr >
     </form>
   </div>
 </div> 
