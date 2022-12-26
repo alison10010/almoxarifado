@@ -146,7 +146,7 @@
             Modificar 
           </button>
         @endif
-        @if(isset($edit))
+        @if( $saida->image != 'sem_foto.png')
           <!-- Button trigger modal -->
           <a type="button" class="btn btn-primary" href="/img/assinaturas/{{ $saida->image }}" target="_blank">Ver assinatura</button></a>
         @endif

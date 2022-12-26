@@ -5,7 +5,7 @@
 
 <form action="{{route('materiais.localizaSaida')}}" method="POST" autocomplete="off" style="margin-top: 2rem">
   @csrf
-
+ 
   <div class="form-row">
     <div class="form-group">
       <h3>Saída de material</h3>

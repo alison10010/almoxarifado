@@ -101,7 +101,11 @@ class MaterialRepository extends AbstractRepository{
     // METODO DE BUSCAR PELO ID OU NOME
     public function buscaMaterial($identificador)
     {
-        $material = Material::where([['id', '=', $identificador]])->orWhere('nome','LIKE','%'.$identificador.'%')->orderBy('id', 'DESC')->get();
+        $material = Material::where([['id', '=', $identificador]])
+                            ->where('status','=','1')
+                            ->orWhere('nome','LIKE','%'.$identificador.'%')   
+                            ->where('status','=','1')                         
+                            ->orderBy('id', 'DESC')->get();
         return $material;
     }
    
