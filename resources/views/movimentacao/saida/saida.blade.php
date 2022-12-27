@@ -42,7 +42,7 @@
           <th scope="col" style="width: 12%"><center>Estoque minimo</center></th>
           <th scope="col" style="width: 25%">Decrição</th>
           <th scope="col" style="width: 13%">Grupo</th>
-            <th scope="col">Saída</th>
+            <th scope="col" class="centro">Saída</th>
         </tr>
     </thead>
     <tbody>  
@@ -50,7 +50,7 @@
           <tr> 
               <td><center>{{ $listas->id }}</center></td>
               <td>{{ $listas->nome }}</td>
-              <td class="centro">{{ $listas->estoque_atual }}</td>
+              <td class="centro" style="background: {{ $listas->estoque_atual >= $listas->estoque_minimo ? '' : '#ff00003d' }};">{{ $listas->estoque_atual }}</td>
               <td class="centro">{{ $listas->estoque_minimo }}</td>
               <td>{{ $listas->descricao }}</td>
               <td class="centro">{{ $listas->grupo->nome }}</td>

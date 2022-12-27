@@ -14,9 +14,9 @@
                 <th scope="col" style="width: 10%">Identificação</th>
                 <th scope="col" style="width: 20%">Grupo</th>
                 <th scope="col" style="width: 25%">Descrição</th>                
-                <th scope="col" style="width: 10%"><center>Status</center></th>
-                <th scope="col" style="width: 25%"></th>
-                <th scope="col" style="width: 15%"></th>
+                <th scope="col" style="width: 9%"><center>Status</center></th>
+           
+                
             </tr>
         </thead>
         <tbody>  

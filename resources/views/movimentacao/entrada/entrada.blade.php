@@ -42,13 +42,13 @@
           <th scope="col" style="width: 12%"><center>Estoque minimo</center></th>
           <th scope="col" style="width: 25%">Decrição</th>
           <th scope="col" style="width: 13%">Grupo</th>
-            <th scope="col">Adicionar</th>
+          <th scope="col" class="centro">Adicionar</th>
         </tr>
     </thead>
     <tbody>  
         @foreach ($material as $listas)
           <tr>
-              <td>{{ $listas->id }}</td>
+              <td class="centro">{{ $listas->id }}</td>
               <td>{{ $listas->nome }}</td>
               <td class="centro">{{ $listas->estoque_atual }}</td>
               <td class="centro">{{ $listas->estoque_minimo }}</td>
