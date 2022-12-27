@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\SaidaController;
 
 /*
@@ -20,24 +19,21 @@ use App\Http\Controllers\SaidaController;
 
 Route::middleware('auth')->group(function () {  // PAGINA PARA CRIAR UM EVENTO PRECISA TÁ LOGADO
 
-    require __DIR__.'/grupo.php';
+    require __DIR__.'/grupo.php'; 
 
-    require __DIR__.'/material.php';
-
-    require __DIR__.'/relatorio.php';
+    require __DIR__.'/material.php'; 
     
-    require __DIR__.'/movimentacao.php';
+    require __DIR__.'/saida.php'; 
+    
+    require __DIR__.'/entrada.php'; 
 
-    Route::post('/entrada/inclusao', [EntradaController::class, 'store'])->name('entrada.store'); 
+    require __DIR__.'/relatorio.php'; 
+    
+    require __DIR__.'/movimentacao.php'; 
 
     Route::get('/', function () { return view('dashboard'); });
 
-    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
-
-    Route::get('/relatorioEntrada/{identificacao?}{dataOne?}{dataTwo?}', [EntradaController::class, 'relatorioEntradaPDF'])->name('relatorio.entradaPDF');
-
-    Route::get('/relatorioSaida/{saida?}{identificacao?}{dataOne?}{dataTwo?}', [SaidaController::class, 'relatorioSaidaPDF'])->name('relatorio.saidaPDF');
-    
+    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard'); 
 
 });
 

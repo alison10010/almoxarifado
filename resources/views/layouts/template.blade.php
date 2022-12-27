@@ -61,7 +61,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">Material</a>
               <ul class="subMenuColor">                
-                <li><a href="{{route('relatorio.material')}}">Entrada de Material</a></li>
+                <li><a href="{{route('relatorio.entrada')}}">Entrada de Material</a></li>
                 <li><a href="{{route('relatorio.materialSaida')}}">Saída de Material</a></li>
                 <li class="divider"></li>
                 <li><a href="{{route('saida.Localiza')}}">Alterar saída</a></li>

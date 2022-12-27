@@ -98,7 +98,7 @@ function frameRelatorioEntrada(){
     var DataTwo = form.elements['dataTwo'];
     var dataTwo = DataTwo.value;
     
-    var link = '/relatorioEntrada?identificacao='+identificacao+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
+    var link = '/relatorio/entrada?identificacao='+identificacao+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
 
     document.getElementById('frame').src = link;
 }
@@ -122,7 +122,7 @@ function frameRelatorioSaida(){
     var DataTwo = form.elements['dataTwo'];
     var dataTwo = DataTwo.value;
     
-    var link = '/relatorioSaida?opcaoSaida='+saida+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
+    var link = '/relatorio/saida?opcaoSaida='+saida+'&material='+material+'&dataOne='+dataOne+'&dataTwo='+dataTwo; 
 
     document.getElementById('frame').src = link;
 }
