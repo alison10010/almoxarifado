@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\SaidaController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +15,7 @@ use App\Http\Controllers\SaidaController;
 
 // ROTAS NA MESMA PASTA
 
-Route::middleware('auth')->group(function () {  // PAGINA PARA CRIAR UM EVENTO PRECISA TÁ LOGADO
+Route::middleware('auth')->group(function () {  // PAGINAS QUE PRECISA TÁ LOGADO
 
     require __DIR__.'/grupo.php'; 
 
